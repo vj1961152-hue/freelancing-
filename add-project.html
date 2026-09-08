@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Project</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="section">
+
+        <!-- Back Button -->
+        <a href="dashboard.html" class="back-btn">
+            ←
+        </a>
+
+        <h2>Add New Project</h2>
+
+        <div class="contact-box">
+
+            <!-- Add Project Form -->
+            <form id="projectForm">
+
+                <input type="text" id="projectName" placeholder="Project Name" required>
+
+                <input type="text" id="projectCategory" placeholder="Project Category" required>
+
+                <input type="url" id="projectLink" placeholder="Project Link" required>
+
+                <textarea id="projectDescription" rows="5" placeholder="Project Description"></textarea>
+
+                <button type="submit" class="btn primary">
+                    Add Project
+                </button>
+
+            </form>
+
+
+            <!-- Saved Projects -->
+            <h3 style="color:white; margin-top:40px;">
+                Saved Projects
+            </h3>
+
+            <div id="projectList"></div>
+
+        </div>
+
+
+        <br>
+
+
+        <!-- Back to Dashboard -->
+        <a href="dashboard.html" class="btn secondary">
+            Back to Dashboard
+        </a>
+
+    </section>
+
+
+    <script>
+
+        // ==============================
+        // DISPLAY SAVED PROJECTS
+        // ==============================
+
+        function displayProjects() {
+
+            let projects =
+                JSON.parse(localStorage.getItem("projects")) || [];
+
+            let projectList =
+                document.getElementById("projectList");
+
+            projectList.innerHTML = "";
+
+
+            projects.forEach((project) => {
+
+                projectList.innerHTML += `
+
+                    <div
+                        style="
+                        background:#111827;
+                        color:white;
+                        padding:15px;
+                        margin:10px auto;
+                        width:80%;
+                        border-radius:10px;
+                        text-align:left;
+                        "
+                    >
+
+                        <h4>${project.name}</h4>
+
+                        <p>
+                            <b>Category:</b>
+                            ${project.category}
+                        </p>
+
+                        <p>
+                            <b>Link:</b>
+
+                            <a
+                                href="${project.link}"
+                                target="_blank"
+                                style="color:#38bdf8;"
+                            >
+                                Open Project
+                            </a>
+                        </p>
+
+                        <p>
+                            <b>Description:</b>
+                            ${project.description}
+                        </p>
+
+                    </div>
+
+                `;
+
+            });
+
+        }
+
+
+        // ==============================
+        // ADD PROJECT
+        // ==============================
+
+        document
+            .getElementById("projectForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+
+                // Project information
+                const project = {
+
+                    name:
+                        document.getElementById("projectName").value,
+
+                    category:
+                        document.getElementById("projectCategory").value,
+
+                    link:
+                        document.getElementById("projectLink").value,
+
+                    description:
+                        document.getElementById("projectDescription").value
+
+                };
+
+
+                // Get old projects
+                let projects =
+                    JSON.parse(localStorage.getItem("projects")) || [];
+
+
+                // Add new project
+                projects.push(project);
+
+
+                // Save in LocalStorage
+                localStorage.setItem(
+                    "projects",
+                    JSON.stringify(projects)
+                );
+
+
+                // Success message
+                alert("Project Added Successfully!");
+
+
+                // Clear form
+                this.reset();
+
+
+                // Update saved projects
+                displayProjects();
+
+
+                // ==================================
+                // OPEN PROJECT DIRECTLY
+                // ==================================
+
+                window.location.href = project.link;
+
+            });
+
+
+        // Display projects when page loads
+        displayProjects();
+
+    </script>
+
+</body>
+
+</html>

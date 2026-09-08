@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedant | Web Developer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+
+            <div class="badge">Available for Freelance</div>
+
+            <h1>Building websites that bring you customers & growth</h1>
+
+            <p>
+                I design modern, fast, and high-converting websites for businesses, startups, and personal brands.
+            </p>
+
+            <div class="buttons">
+                <a href="https://wa.me/+918849626500" class="btn primary">Get Free Demo</a>
+                <a href="#projects" class="btn secondary">View Projects</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about">
+        <section class="section">
+            <h2>About Me</h2>
+
+            <div class="about-box">
+                <p>
+                    Hi, I'm Vedant, a BCA student and web developer.<br><br>
+                    I help businesses build modern, mobile-friendly websites
+                    that attract customers and grow their online presence.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- SERVICES -->
+        <section class="section">
+            <h2>What I Do</h2>
+
+            <div class="grid">
+
+
+
+                <div class="card">
+                    <a href="https://vj1961152-hue.github.io/new-bussiness-website/" target="_blank"> Business Websites
+
+                    </a>
+                </div>
+
+                <div class="card">
+                    <a href="https://vj1961152-hue.github.io/Landing-page/" target="_blank">
+                        Landing page
+                    </a>
+
+                </div>
+                <div class="card">
+                    <a href="https://vj1961152-hue.github.io/Bussiness-portfolio/" target="_blank">
+                        Portfolio Sites
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+            <h2>Featured Work</h2>
+
+            <div class="grid">
+                <div class="card big">
+                    <a href="https://vj1961152-hue.github.io/Restaurant-bussiness/" target="_blank">
+                        Restuarant Website
+
+                    </a>
+
+                </div>
+                <div class="card big">
+                    <a href="https://vj1961152-hue.github.io/Gym-bussiness/" target="_blank">
+
+                        Gym Website
+                    </a>
+                </div>
+                <div class="card big">
+                    <a href="https://vj1961152-hue.github.io/music-label/" target="_blank">
+                        Music Portfolio
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2>Let's Work Together</h2>
+
+            <p>Need a business website, landing page or portfolio?</p>
+
+            <p>WhatsApp: +91 8849626500</p>
+
+            <a href="https://wa.me/+918849626500" class="btn primary">
+                Contact Me
+            </a>
+        </section>
+        <!-- CONTACT FORM -->
+
+        <section class="section" id="contact">
+            <h2>Get Free Website Demo</h2>
+            <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+
+
+                <input type="text" placeholder="Your Name" required>
+
+                <input type="tel" placeholder="Mobile Number" required>
+
+                <input type="email" placeholder="Email Address" required>
+
+                <textarea placeholder="Tell me about your business" rows="5"></textarea>
+
+                <button type="submit" class="btn primary">
+                    Send Request
+                </button>
+            </form>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <h2>Want a website that actually gets clients?</h2>
+            <a href="https://wa.me/+918849626500" class="btn primary">Contact on WhatsApp</a>
+            <a href="admin-login.html" class="btn secondary">
+                Admin Login
+            </a>
+
+        </section>
+
+
+        <footer>
+            <p>© 2026 Vedant | Web Developer</p>
+        </footer>
+
+
+        <script>
+            function sendToWhatsApp(event) {
+                event.preventDefault();
+
+                let name = document.querySelector('input[type="text"]').value;
+                let phone = document.querySelector('input[type="tel"]').value;
+                let email = document.querySelector('input[type="email"]').value;
+                let message = document.querySelector('textarea').value;
+
+                let whatsappMessage =
+                    `New Website Inquiry
+
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+
+Message:
+${message}`;
+
+                let url = `https://wa.me/918849626500?text=${encodeURIComponent(whatsappMessage)}`;
+
+                window.open(url, "_blank");
+            }
+        </script>
+
+</body>
+
+</html>
+
+</body>
+
+</html>

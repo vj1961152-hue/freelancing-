@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="section">
+        <h2>Admin Dashboard</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>Total Projects</h3>
+                <p id="total projects">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Client Requests</h3>
+                <p>0</p>
+            </div>
+            <div class="card">
+                <h3>Status</h3>
+                <p>Active</p>
+            </div>
+
+        </div> <!-- grid close -->
+
+        <div class="buttons">
+
+            <a href="add-project.html" class="btn primary">
+                Add Project
+            </a>
+
+
+
+            <a href="view-request.html" class="btn secondary">
+                View Requests
+            </a>
+
+
+            </a>
+
+        </div>
+
+
+
+
+
+        </div>
+
+    </section>
+
+    </div>
+    </section>
+
+</body>
+<script>
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+    document.getElementById("totalProjects").innerText = projects.length;
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Projects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="section">
+
+        <a href="dashboard.html" class="back-btn">←</a>
+
+        <h2>View Projects</h2>
+
+        <div id="projectList" class="grid">
+
+        </div>
+
+    </section>
+
+    <script>
+
+        let projects = JSON.parse(localStorage.getItem("projects")) || [];
+
+        let output = "";
+
+        projects.forEach(project => {
+
+            output += `
+    <div class="card">
+        <h3>${project.name}</h3>
+        <p><b>Category:</b> ${project.category}</p>
+        <p><b>Description:</b> ${project.description}</p>
+
+        <a href="${project.link}" target="_blank" class="btn primary">
+            Visit Project
+        </a>
+    </div>
+    `;
+
+        });
+
+        document.getElementById("projectList").innerHTML = output;
+
+    </script>
+
+</body>
+
+</html>

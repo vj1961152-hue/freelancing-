@@ -1,0 +1,515 @@
+# Premium Gym Website Demo
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Website</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #050816;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 8, 22, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1f2937;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #22c55e;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #22c55e;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('gym4.jpg') center/cover;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 50px;
+            border: 1px solid #22c55e;
+            color: #22c55e;
+            margin-bottom: 25px;
+            background: #22c55e11;
+        }
+
+        h1 {
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #22c55e, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #d1d5db;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: #22c55e;
+            color: black;
+        }
+
+        .primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px #22c55e66;
+        }
+
+        .secondary {
+            border: 1px solid #374151;
+            color: white;
+            background: #111827;
+        }
+
+        .secondary:hover {
+            border-color: #22c55e;
+            transform: translateY(-4px);
+        }
+
+        .section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #9ca3af;
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            padding: 35px;
+            border-radius: 24px;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #22c55e;
+            box-shadow: 0 10px 40px #22c55e22;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .card p {
+            color: #9ca3af;
+            line-height: 1.8;
+        }
+
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .plan-card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-8px);
+            border-color: #22c55e;
+            box-shadow: 0 10px 40px #22c55e22;
+        }
+
+        .plan-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 42px;
+            color: #22c55e;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .plan-card p {
+            color: #9ca3af;
+            margin-bottom: 12px;
+        }
+
+        .trainers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .trainer-card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .trainer-card:hover {
+            transform: translateY(-8px);
+            border-color: #22c55e;
+        }
+
+        .trainer-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .trainer-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .trainer-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .trainer-content p {
+            color: #9ca3af;
+        }
+
+        .cta {
+            padding: 120px 8%;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #111827, #0f172a);
+            border: 1px solid #1f2937;
+            border-radius: 30px;
+            padding: 80px 30px;
+        }
+
+        .cta-box h2 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            color: #9ca3af;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+            border-top: 1px solid #1f2937;
+        }
+
+        @media(max-width:768px) {
+
+            nav ul {
+                display: none;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .section-title h2,
+            .cta-box h2 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">FitZone.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Programs</a></li>
+            <li><a href="#plans">Plans</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                Transform Your Body
+            </div>
+
+            <h1>
+                Train Hard Build A <span class="gradient">Stronger Life</span>
+            </h1>
+
+            <p>
+                Premium fitness training with expert coaches, modern equipment
+                and personalized workout programs.
+            </p>
+
+            <div class="buttons">
+                <a href="#plans" class="btn primary">Join Now</a>
+                <a href="#services" class="btn secondary">Explore Programs</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="services">
+
+        <div class="section-title">
+            <h2>Fitness Programs</h2>
+            <p>
+                Build strength, endurance and confidence with expert guidance.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Strength Training</h3>
+                <p>
+                    Professional weight training for muscle growth and power.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Cardio Fitness</h3>
+                <p>
+                    Improve stamina and overall health with modern cardio sessions.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Personal Coaching</h3>
+                <p>
+                    One-on-one training programs designed for your goals.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="plans">
+
+        <div class="section-title">
+            <h2>Membership Plans</h2>
+            <p>
+                Flexible fitness plans designed for every lifestyle.
+            </p>
+        </div>
+
+        <div class="plans">
+
+            <div class="plan-card">
+                <h3>Basic</h3>
+                <div class="price">₹999</div>
+                <p>Gym Access</p>
+                <p>Cardio Area</p>
+                <p>Locker Facility</p>
+            </div>
+
+            <div class="plan-card">
+                <h3>Premium</h3>
+                <div class="price">₹1999</div>
+                <p>All Equipment Access</p>
+                <p>Personal Trainer</p>
+                <p>Diet Guidance</p>
+            </div>
+
+            <div class="plan-card">
+                <h3>Elite</h3>
+                <div class="price">₹2999</div>
+                <p>VIP Training</p>
+                <p>Custom Workout Plan</p>
+                <p>Priority Support</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Expert Trainers</h2>
+            <p>
+                Learn from experienced professional fitness coaches.
+            </p>
+        </div>
+
+        <div class="trainers">
+
+            <div class="trainer-card">
+                <img src="gym3.jpg">
+
+                <div class="trainer-content">
+                    <h3>Rahul Sharma</h3>
+                    <p>Strength Coach</p>
+                </div>
+            </div>
+
+            <div class="trainer-card">
+                <img src="gym2.jpg">
+
+                <div class="trainer-content">
+                    <h3>Anjali Verma</h3>
+                    <p>Fitness Trainer</p>
+                </div>
+            </div>
+
+            <div class="trainer-card">
+                <img src="gym1.jpg">
+
+                <div class="trainer-content">
+                    <h3>Arjun Patel</h3>
+                    <p>Bodybuilding Expert</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cta" id="contact">
+
+        <div class="cta-box">
+
+            <h2>Start Your Fitness Journey</h2>
+
+            <p>
+                Join today and transform your body with professional training.
+            </p>
+
+            <a href="https://wa.me/+918849626500" class="btn primary">
+                Contact On WhatsApp
+            </a>
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 FitZone Gym
+    </footer>
+
+</body>
+
+</html>
